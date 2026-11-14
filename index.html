@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TFS2 Build Lab — The Final Stand 2</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>TFS2 Build Lab <small>The Final Stand 2</small></h1>
+  <nav>
+    <button data-v="catalogo" class="on">Catálogo</button>
+    <button data-v="build">Build</button>
+    <button data-v="gerenciar">Gerenciar perks</button>
+  </nav>
+</header>
+<div id="rascunho" class="faixa" hidden></div>
+<div id="aviso" role="status" hidden></div>
+<main>
+
+  <section id="v-catalogo">
+    <div class="barra">
+      <input id="q" type="search" placeholder="Pesquisar perk, efeito ou aba" size="30">
+      <label class="inline">Nível dos perks <input id="nv" type="range" min="1" max="4" value="3"> <b id="nv-t">3</b></label>
+      <label class="inline"><input id="orig" type="checkbox"> mostrar efeito original</label>
+    </div>
+    <div id="abas"></div>
+    <div id="grade"></div>
+  </section>
+
+  <section id="v-build" hidden>
+    <div class="barra">
+      <input id="bnome" placeholder="Nome da build">
+      <button id="b-salvar">Salvar build</button>
+      <button id="b-recorte">Gerar recorte</button>
+      <button id="b-limpar">Nova build</button>
+    </div>
+    <div class="regua">
+      <div id="barra"></div>
+      <input id="rg" type="range" min="0" max="0" value="0" aria-label="Régua: quantos perks são essenciais">
+      <p id="rgt" class="vazio"></p>
+    </div>
+    <div id="slots"></div>
+    <textarea id="bnotas" rows="2" placeholder="Notas da build (opcional)"></textarea>
+    <h2>Builds salvas</h2>
+    <div class="barra"><button id="b-exp">Exportar builds</button><button id="b-imp">Importar builds</button></div>
+    <ul id="salvas"></ul>
+  </section>
+
+  <section id="v-gerenciar" hidden>
+    <h2>Adicionar ou editar perk</h2>
+    <form id="fp">
+      <input type="hidden" name="uid">
+      <label>ID (posição na lista)<input name="id" type="number" min="1" placeholder="vazio = próximo"></label>
+      <label>Nome<input name="nome"></label>
+      <label>Cor<select name="cor" id="f-cor"></select></label>
+      <label>Abas (separe por vírgula)<input name="abas" placeholder="tiro, dano, crítico"></label>
+      <label>Imagem (caminho opcional)<input name="imagem" placeholder="img/16.png"></label>
+      <label>Valores dos níveis 1 a 4 (para {v})<input name="valores" placeholder="4, 8, 12, 16"></label>
+      <label class="larga">Efeito original (texto do jogo)<textarea name="original" rows="3"></textarea></label>
+      <label class="larga">Efeito simples<textarea name="simples" rows="3"></textarea></label>
+      <p class="dica">Uma linha vale para todos os níveis (use {v} onde entra o valor). Quatro linhas = um texto por nível. Vazio = BLANK. Se o ID já existir, os perks seguintes sobem uma posição (6→7, 7→8…).</p>
+      <div class="barra"><button type="submit">Salvar perk</button><button type="button" id="p-novo">Limpar formulário</button></div>
+    </form>
+
+    <h2>Criar caixas vazias por ID</h2>
+    <div class="barra">
+      <select id="lote-cor"></select>
+      <input id="lote-de" type="number" min="1" placeholder="ID inicial">
+      <input id="lote-ate" type="number" min="1" placeholder="ID final">
+      <button id="lote-go">Criar caixas</button>
+    </div>
+
+    <h2>Banco de perks <small id="pend"></small></h2>
+    <div class="barra"><button id="p-exp">Exportar perks.json</button><button id="p-imp">Importar perks.json</button></div>
+    <table id="tab"></table>
+  </section>
+
+</main>
+
+<dialog id="dlg">
+  <div class="barra">
+    <button id="r-img">Copiar imagem</button><button id="r-png">Baixar PNG</button>
+    <button id="r-txt">Copiar texto</button><button id="r-x">Fechar</button>
+  </div>
+  <canvas id="cv"></canvas>
+</dialog>
+
+<script src="app.js"></script>
+</body>
+</html>

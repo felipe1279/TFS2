@@ -1,0 +1,16 @@
+{
+ "versao": "0.1.0",
+ "cores": {
+  "vermelha": { "nome": "Vermelhos", "hex": "#d83a3a" },
+  "azul": { "nome": "Azuis", "hex": "#3a7bd8" },
+  "verde": { "nome": "Verdes", "hex": "#35a853" },
+  "amarela": { "nome": "Amarelos", "hex": "#d8a935" },
+  "roxa": { "nome": "Roxos", "hex": "#8e4ad8" }
+ },
+ "perks": [
+  { "uid": "p-exemplo-1", "id": 1, "nome": "Dano de Tiro (exemplo)", "cor": "vermelha", "abas": ["tiro", "dano"], "imagem": "", "valores": ["", "", 12, ""],
+    "original": "Seus disparos com arma de fogo têm o dano aumentado em {v}%", "simples": "{v}% de dano a mais para tiros." },
+  { "uid": "p-exemplo-2", "id": 2, "nome": "", "cor": "vermelha", "abas": [], "imagem": "", "valores": [], "original": "", "simples": "" },
+  { "uid": "p-exemplo-3", "id": 3, "nome": "", "cor": "azul", "abas": [], "imagem": "", "valores": [], "original": "", "simples": "" }
+ ]
+}
